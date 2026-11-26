@@ -40,6 +40,7 @@ model.fit(x,y)
 
 #Guardar (Serializarlo) el modelo entrenando en un archivo 
 BASE_DIR = Path(__file__).resolve().parent
-MODEL_PATH = BASE_DIR / "linear_model.joblib"
+MODEL_PATH = BASE_DIR / "model" / "linear_model.joblib"
 
+MODEL_PATH.parent.mkdir(exist_ok=True)
 joblib.dump(model, MODEL_PATH)
