@@ -8,7 +8,7 @@ app = FastAPI(title="API de Predicción de Precios de Viviendas")
 
 
 BASE_DIR = Path(__file__).resolve().parent
-MODEL_PATH = BASE_DIR / "linear_model.joblib"
+MODEL_PATH = BASE_DIR / "model" / "linear_model.joblib"
 
 
 try:
