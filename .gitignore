@@ -1,0 +1,39 @@
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Caché y compilados de Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# Variables de entorno y secretos
+.env
+.env.*
+!.env.example
+
+# Base de datos local de Django / SQLite
+*.sqlite3
+*.sqlite3-journal
+db.sqlite3
+
+# Archivos estáticos o media generados localmente (ajusta si los necesitas en el repo)
+staticfiles/
+media/
+
+# Modelos entrenados o datasets pesados (quita # si quieres ignorarlos)
+# *.joblib
+# *.pkl
+# *.h5
+# *.pt
+# data_load/
+
+# Editores y sistema operativo
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
