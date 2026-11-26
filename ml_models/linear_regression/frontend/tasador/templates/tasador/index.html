@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tasador de Viviendas | {{ nombre_aprendiz }}</title>
+
+ 
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --mui-primary: #1976d2;
+      --mui-primary-dark: #115293;
+      --mui-surface: #ffffff;
+      --mui-bg-soft: #eef4fb;
+      --mui-tint: #e3f2fd;
+      --mui-border: #d6e4f0;
+      --mui-text: #1e293b;
+      --mui-muted: #546e7a;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(150deg, #e6f0fa 0%, #f5f9fd 60%, #e9f2fc 100%);
+      color: var(--mui-text);
+      margin: 0;
+    }
+
+    main {
+      flex: 1 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 16px;
+    }
+
+    .mui-card {
+      width: 100%;
+      max-width: 540px;
+      background: var(--mui-surface);
+      border: 1px solid var(--mui-border);
+      border-radius: 16px;
+      box-shadow: 0 10px 28px rgba(25, 118, 210, 0.1);
+      padding: 36px 24px;
+    }
+
+    @media only screen and (min-width: 601px) {
+      .mui-card {
+        padding: 42px 40px;
+      }
+    }
+
+    .mui-home-icon {
+      font-size: 46px;
+      color: var(--mui-primary);
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .mui-title {
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 700;
+      color: #162032;
+      margin: 0 0 28px 0;
+    }
+
+    .mui-field-label {
+      display: block;
+      font-weight: 500;
+      font-size: 0.98rem;
+      color: #263238;
+      margin-bottom: 8px;
+    }
+
+    .mui-input-box {
+      display: flex;
+      align-items: center;
+      border: 1.5px solid #c5d6e8;
+      border-radius: 10px;
+      background-color: #fafcff;
+      overflow: hidden;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .mui-input-box:focus-within {
+      border-color: var(--mui-primary);
+      box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.14);
+      background-color: #ffffff;
+    }
+
+    .mui-input-prefix {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 14px;
+      background-color: var(--mui-tint);
+      color: var(--mui-primary);
+      height: 50px;
+      border-right: 1px solid #d4e3f2;
+    }
+
+    .mui-input-box input[type="number"].mui-number-input {
+      border: none !important;
+      box-shadow: none !important;
+      margin: 0 !important;
+      height: 50px !important;
+      padding: 0 14px !important;
+      font-size: 1.05rem !important;
+      color: var(--mui-text) !important;
+      background: transparent !important;
+    }
+
+    .mui-btn-calcular {
+      width: 100%;
+      height: 50px;
+      margin-top: 22px;
+      background-color: var(--mui-primary) !important;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.4px;
+      text-transform: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(25, 118, 210, 0.25);
+    }
+
+    .mui-btn-calcular:hover {
+      background-color: var(--mui-primary-dark) !important;
+    }
+
+    .mui-result-box {
+      margin-top: 24px;
+      padding: 18px;
+      border-radius: 12px;
+      background-color: var(--mui-tint);
+      border: 1px solid #bbdefb;
+      text-align: center;
+    }
+
+    .mui-price {
+      font-size: clamp(1.3rem, 3vw, 1.7rem);
+      font-weight: 700;
+      color: var(--mui-primary-dark);
+      margin-top: 4px;
+    }
+
+    .mui-error-box {
+      margin-top: 20px;
+      padding: 14px 16px;
+      border-radius: 10px;
+      background-color: #fdecea;
+      border: 1px solid #f5c6cb;
+      color: #b71c1c;
+      font-size: 0.94rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    footer.mui-footer {
+      background-color: #ffffff;
+      border-top: 1px solid var(--mui-border);
+      padding: 16px 20px;
+      color: var(--mui-muted);
+      font-size: 0.88rem;
+    }
+
+    .mui-ficha-chip {
+      display: inline-block;
+      background-color: var(--mui-tint);
+      color: var(--mui-primary-dark);
+      border: 1px solid #bbdefb;
+      border-radius: 999px;
+      padding: 4px 14px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <section class="mui-card z-depth-0" aria-label="Tasador de Viviendas">
+      <div class="center-align">
+        <i class="material-icons mui-home-icon" aria-hidden="true">home</i>
+        <h1 class="mui-title">Tasador de Viviendas</h1>
+      </div>
+
+      <form method="POST" action="{% url 'index' %}" novalidate>
+        {% csrf_token %}
+
+        <label for="m2" class="mui-field-label">Área de la vivienda (m²)</label>
+        <div class="mui-input-box">
+          <span class="mui-input-prefix" aria-hidden="true">
+            <i class="material-icons">straighten</i>
+          </span>
+          <input
+            type="number"
+            step="any"
+            min="0.1"
+            id="m2"
+            name="m2"
+            class="mui-number-input"
+            placeholder="Ej: 85.5"
+            value="{{ m2_ingresado }}"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn waves-effect waves-light mui-btn-calcular">
+          <i class="material-icons" aria-hidden="true">calculate</i>
+          <span>Calcular Precio</span>
+        </button>
+      </form>
+
+      {% if error %}
+        <div class="mui-error-box" role="alert">
+          <i class="material-icons" aria-hidden="true">error_outline</i>
+          <span>{{ error }}</span>
+        </div>
+      {% endif %}
+
+      {% if precio_formateado is not None %}
+        <div class="mui-result-box" role="status" aria-live="polite">
+          <div style="color: #37474f; font-size: 0.9rem;">
+            Estimación para <strong>{{ m2_ingresado }} m²</strong>
+          </div>
+          <div class="mui-price">
+            $ {{ precio_formateado }} {{ moneda }}
+          </div>
+        </div>
+      {% endif %}
+    </section>
+  </main>
+
+  <footer class="mui-footer">
+    <div class="container" style="width: 92%; max-width: 1100px;">
+      <div class="row valign-wrapper" style="margin-bottom: 0; flex-wrap: wrap;">
+        <div class="col s12 m4 center-align left-align-med-and-up" style="margin-bottom: 6px;">
+          <strong style="color: #162032;">Aprendiz:</strong> {{ nombre_aprendiz }}
+        </div>
+        <div class="col s12 m4 center-align" style="margin-bottom: 6px;">
+          <span class="mui-ficha-chip">Ficha: {{ numero_ficha }}</span>
+        </div>
+        <div class="col s12 m4 center-align right-align-med-and-up">
+          <strong style="color: #162032;">Programa:</strong> {{ programa_formacion }}
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
